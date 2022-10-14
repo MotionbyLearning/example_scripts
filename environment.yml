@@ -1,81 +1,12 @@
-name: base
+name: mobyle_demo
 channels:
   - conda-forge
   - defaults
 dependencies:
-  - _libgcc_mutex=0.1=conda_forge
-  - _openmp_mutex=4.5=2_gnu
-  - brotlipy=0.7.0=py310h5764c6d_1004
-  - bzip2=1.0.8=h7f98852_4
-  - c-ares=1.18.1=h7f98852_0
-  - ca-certificates=2022.6.15=ha878542_0
-  - certifi=2022.6.15=py310hff52083_0
-  - cffi=1.15.0=py310h0fdd8cc_0
-  - charset-normalizer=2.0.12=pyhd8ed1ab_0
-  - colorama=0.4.5=pyhd8ed1ab_0
-  - conda=4.13.0=py310hff52083_1
-  - conda-package-handling=1.8.1=py310h5764c6d_1
-  - cryptography=37.0.1=py310h9ce1e76_0
-  - icu=70.1=h27087fc_0
-  - idna=3.3=pyhd8ed1ab_0
-  - keyutils=1.6.1=h166bdaf_0
-  - krb5=1.19.3=h3790be6_0
-  - ld_impl_linux-64=2.36.1=hea4e1c9_2
-  - libarchive=3.5.2=hb890918_3
-  - libcurl=7.83.1=h7bff187_0
-  - libedit=3.1.20191231=he28a2e2_2
-  - libev=4.33=h516909a_1
-  - libffi=3.4.2=h7f98852_5
-  - libgcc-ng=12.1.0=h8d9b700_16
-  - libgomp=12.1.0=h8d9b700_16
-  - libiconv=1.16=h516909a_0
-  - libmamba=0.24.0=hd8a31e3_1
-  - libmambapy=0.24.0=py310hab0e683_1
-  - libnghttp2=1.47.0=h727a467_0
-  - libnsl=2.0.0=h7f98852_0
-  - libsolv=0.7.22=h6239696_0
-  - libssh2=1.10.0=ha56f1ee_2
-  - libstdcxx-ng=12.1.0=ha89aaad_16
-  - libuuid=2.32.1=h7f98852_1000
-  - libxml2=2.9.14=h22db469_3
-  - libzlib=1.2.12=h166bdaf_1
-  - lz4-c=1.9.3=h9c3ff4c_1
-  - lzo=2.10=h516909a_1000
-  - mamba=0.24.0=py310hf87f941_1
-  - ncurses=6.3=h27087fc_1
-  - openssl=1.1.1q=h166bdaf_0
-  - pybind11-abi=4=hd8ed1ab_3
-  - pycosat=0.6.3=py310h5764c6d_1010
-  - pyopenssl=22.0.0=pyhd8ed1ab_0
-  - pysocks=1.7.1=py310hff52083_5
-  - python=3.10.5=h582c2e5_0_cpython
-  - python_abi=3.10=2_cp310
-  - readline=8.1.2=h0f457ee_0
-  - reproc=14.2.3=h7f98852_0
-  - reproc-cpp=14.2.3=h9c3ff4c_0
-  - requests=2.28.0=pyhd8ed1ab_0
-  - ruamel_yaml=0.15.80=py310h5764c6d_1007
-  - setuptools=62.5.0=py310hff52083_0
-  - sqlite=3.38.5=h4ff8645_0
-  - tk=8.6.12=h27826a3_0
-  - tqdm=4.64.0=pyhd8ed1ab_0
-  - tzdata=2022a=h191b570_0
-  - urllib3=1.26.9=pyhd8ed1ab_0
-  - wheel=0.37.1=pyhd8ed1ab_0
-  - xz=5.2.5=h516909a_1
-  - yaml=0.2.5=h7f98852_2
-  - yaml-cpp=0.7.0=h27087fc_1
-  - zlib=1.2.12=h166bdaf_1
-  - zstd=1.5.2=h8a70e8d_2
-  - pip:
-    - numpy==1.23.2
-    - packaging==21.3
-    - pandas==1.4.3
-    - pip==21.3.1
-    - pycparser==2.21
-    - pyparsing==3.0.9
-    - python-dateutil==2.8.2
-    - pytz==2022.2.1
-    - six==1.16.0
-    - xarray==2022.6.0
-prefix: /home/ouku/miniconda3
+  - xarray
+  - numpy
+  - matplotlib
+  - pandas
+  - dask
+  - zarr
+

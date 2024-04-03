@@ -1,0 +1,15 @@
+name: mobyle_stac_example
+channels:
+  - conda-forge
+dependencies:
+  - dask-geopandas
+  - dask-expr
+  - pyogrio
+  - pystac
+  - matplotlib
+  - jupyter
+  - pip
+  - pip:
+    - sarxarray
+    - stmtools
+

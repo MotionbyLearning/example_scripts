@@ -1,6 +1,6 @@
 # STAC catalog example for contextual data
 
-Run this test on Spider: `/project/caroline/Public/demo_mobyle/stac_catalog_contextual/`
+Run this example on Spider: `/project/caroline/Public/demo_mobyle/stac_catalog_contextual/`
 
 ## File Structure
 

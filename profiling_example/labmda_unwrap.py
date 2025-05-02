@@ -4,13 +4,13 @@ from depsi.dynamic_estimation import lambda_estimation
 
 
 # Constants
-WAVELENGTH = 0.055465763 # m WAVELENGTH of Sentinel-1 (C-band)
+WAVELENGTH = 0.055465763  # m WAVELENGTH of Sentinel-1 (C-band)
 
 # Initial gauss for the sigma of the unknown parameters
-SIGMA_OFFSET = 0.001 #m
-SIGMA_VEL =  0.0001 #m/yr
-sigma_h = 5 #m
-SIGMA_THER = 0.00005 #m/°C
+SIGMA_OFFSET = 0.001  # m
+SIGMA_VEL = 0.0001  # m/yr
+sigma_h = 5  # m
+SIGMA_THER = 0.00005  # m/°C
 
 # the option for the LAMBDA METHOD
 # METHOD == 1: ILS with shrinking search
@@ -26,6 +26,7 @@ NUM_POINTS = 5
 
 FILE_PATH = "../../data/stm_amsterdam_173p.zarr"
 
+
 def NMAD_to_sigma_phase(nmad, METHOD):
     """
     Converts Normalized Median Absolute Deviation (NMAD) to the sigma of phase observations.
@@ -38,42 +39,40 @@ def NMAD_to_sigma_phase(nmad, METHOD):
         Normalized Median Absolute Deviation value.
     METHOD : {'mean', 'mean_2_sigma'}
         METHOD used to compute sigma.
-    
+
     Returns:
     sigma: ndarray
         Estimated sigma value.
     """
-    if METHOD == 'mean':
+    if METHOD == "mean":
         a, b, c, d = -0.0144869469, 2.00028682, -5.23271341, 21.1111801
-    elif METHOD == 'mean_2_sigma':
+    elif METHOD == "mean_2_sigma":
         a, b, c, d = 0.01907808, 1.2852969, 1.90052824, 11.60677721
     else:
         raise ValueError("Invalid METHOD. Choose 'mean' or 'mean_2_sigma'.")
 
-    sigma = a + b*nmad + c*nmad**2 + d*nmad**3
-    
-    return sigma
+    sigma = a + b * nmad + c * nmad**2 + d * nmad**3
 
+    return sigma
 
 
 if __name__ == "__main__":
     # Load all to memory
     stm = xr.open_zarr(FILE_PATH).compute()
-    
+
     # subset the data for debug
     if NUM_POINTS is not None:
         # Select a subset of points for debugging
         stm = stm.isel(space=range(NUM_POINTS))
 
     # select the reference point
-    nmad_init = np.array(stm['nmad_init'])
-    ref_pnt_idx= int(np.argmin(nmad_init))
+    nmad_init = np.array(stm["nmad_init"])
+    ref_pnt_idx = int(np.argmin(nmad_init))
     stm_refpnt = stm.isel(space=ref_pnt_idx)
 
-    
     # Initiate emty arrays to store results
     x_hat = np.zeros((stm.sizes["space"], 4))
-    Q_xhat = np.zeros(( 4, 4, stm.sizes["space"]))
+    Q_xhat = np.zeros((4, 4, stm.sizes["space"]))
     y_hats = np.zeros((stm.sizes["space"], stm.sizes["time"]))
     phs_unw_init = np.zeros((stm.sizes["space"], stm.sizes["time"]))
 
@@ -137,5 +136,3 @@ if __name__ == "__main__":
         "./stm_amsterdam_173p_init_unw.zarr",
         mode="w",
     )
-
-

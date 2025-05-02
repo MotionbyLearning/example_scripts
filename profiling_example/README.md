@@ -16,6 +16,9 @@ This is an example of how to perform profiling on the Arc Unwrapping algorithms.
 
 We use the `py-spy` package to profile the unwrapping algorithm. For example, we can use the following command to profile the unwrapping algorithm without dask
 
-```python
-py-spy record -o profile.svg -- python labmda_unwrap.py
+
+```sh
+py-spy record --output profile_loop --idle --rate 10 --subprocesses --format speedscope python labmda_unwrap.py
 ```
+
+Then you can visualize the profile using the [`speedscope` web tool](https://www.speedscope.app/)

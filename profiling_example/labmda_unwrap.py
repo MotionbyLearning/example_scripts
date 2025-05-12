@@ -22,7 +22,7 @@ METHOD = 3
 
 # Number of points to load for debugging
 # Set to None to load all points
-NUM_POINTS = 5
+NUM_POINTS = 100
 
 FILE_PATH = "../../data/stm_amsterdam_173p.zarr"
 

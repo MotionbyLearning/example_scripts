@@ -22,7 +22,7 @@ METHOD = 3
 
 # Number of points to load for debugging
 # Set to None to load all points
-NUM_POINTS = 100
+NUM_POINTS = 60
 
 FILE_PATH = "../../data/stm_amsterdam_173p.zarr"
 
@@ -122,17 +122,11 @@ if __name__ == "__main__":
         y_hats[pnt_id, :] = results[2]
         phs_unw_init[pnt_id, :] = results[3]
 
-    # Write x_hat and Q_xhat to npz files, since they so not fit in dimensions of an STM
+    # Write to file
     np.savez(
-        "./x_hat_Q_xhat.npz",
+        "./results.npz",
         x_hat=x_hat,
         Q_xhat=Q_xhat,
-    )
-
-    # Attach y_hats and phs_unw_init to the STM, then write to zarr
-    stm["y_hats"] = (("space", "time"), y_hats)
-    stm["phs_unw_init"] = (("space", "time"), phs_unw_init)
-    stm.to_zarr(
-        "./stm_amsterdam_173p_init_unw.zarr",
-        mode="w",
+        y_hats=y_hats,
+        phs_unw_init=phs_unw_init,
     )

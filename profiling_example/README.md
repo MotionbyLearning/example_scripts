@@ -18,14 +18,34 @@ This is an example of how to perform profiling on the Arc Unwrapping algorithms.
 
 We use the `py-spy` package to profile the unwrapping algorithm. For example, we can use the following command to profile the unwrapping algorithm without dask
 
+### Loop method
 
 ```sh
-py-spy record --output profile_loop_100pnts --idle --rate 10 --subprocesses --format speedscope python labmda_unwrap.py
+py-spy record --output profile_loop_60pnts --idle --rate 5 --subprocesses --format speedscope python labmda_unwrap.py
 ```
 
-For dask:
+### Dask with `processes` schedular:
+
+In `labmda_unwrap_dask.py` configure: 
+
+```py
+# Configure dask scheduler
+dask.config.set(scheduler="processes") 
+```
+
 ```sh
-py-spy record --output profile_dask_100pnts --idle --rate 10 --subprocesses --format speedscope python labmda_unwrap_dask.py
+py-spy record --output profile_dask_60pnts_processes --idle --rate 5 --subprocesses --format speedscope python labmda_unwrap_dask.py
+```
+
+### Dask with `threads` schedular:
+
+```py
+# Configure dask scheduler
+dask.config.set(scheduler="threads") 
+```
+
+```sh
+py-spy record --output profile_dask_60pnts_threads --idle --rate 5 --subprocesses --format speedscope python labmda_unwrap_dask.py
 ```
 
 Then you can visualize the profile using the [`speedscope` web tool](https://www.speedscope.app/)

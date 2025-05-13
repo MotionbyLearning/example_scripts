@@ -9,7 +9,7 @@ This is an example of how to perform profiling on the Arc Unwrapping algorithms.
 
 ## File structure
 
-- lambda_unwrap.ipynb: Jupyter notebook for debugging and vislualization
+- lambda_unwrap.ipynb: Jupyter notebook for debugging and visualization
 - lambda_unwrap.py: Python script for running the unwrapping algorithm in a recursive loop
 - lambda_unwrap_dask.ipynb: Jupyter notebook for debugging dask method
 - lambda_unwrap_dask.py: Python script for running the same unwrapping algorithm with dask databags

@@ -123,7 +123,7 @@ if __name__ == "__main__":
     ref_pnt_idx = int(np.argmin(nmad_init))
     stm_refpnt = stm.isel(space=ref_pnt_idx)
 
-    # Initiate emty arrays to store results
+    # Initiate empty arrays to store results
     x_hat = np.zeros((stm.sizes["space"], 4))
     Q_xhat = np.zeros((4, 4, stm.sizes["space"]))
     y_hats = np.zeros((stm.sizes["space"], stm.sizes["time"]))

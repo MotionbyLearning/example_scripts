@@ -9,10 +9,10 @@ This is an example of how to perform profiling on the Arc Unwrapping algorithms.
 
 ## File structure
 
-- labmda_unwrap.ipynb: Jupyter notebook for debugging and vislualization
-- labmda_unwrap.py: Python script for running the unwrapping algorithm in a recursive loop
-- labmda_unwrap_dask.ipynb: Jupyter notebook for debugging dask method
-- labmda_unwrap_dask.py: Python script for running the same unwrapping algorithm with dask databags
+- lambda_unwrap.ipynb: Jupyter notebook for debugging and vislualization
+- lambda_unwrap.py: Python script for running the unwrapping algorithm in a recursive loop
+- lambda_unwrap_dask.ipynb: Jupyter notebook for debugging dask method
+- lambda_unwrap_dask.py: Python script for running the same unwrapping algorithm with dask databags
 
 ## Profiling the unwrapping algorithm
 
@@ -21,12 +21,12 @@ We use the `py-spy` package to profile the unwrapping algorithm. For example, we
 ### Loop method
 
 ```sh
-py-spy record --output profile_loop_60pnts --idle --rate 5 --subprocesses --format speedscope python labmda_unwrap.py
+py-spy record --output profile_loop_60pnts --idle --rate 5 --subprocesses --format speedscope python lambda_unwrap.py
 ```
 
 ### Dask with `processes` schedular:
 
-In `labmda_unwrap_dask.py` configure: 
+In `lambda_unwrap_dask.py` configure: 
 
 ```py
 # Configure dask scheduler
@@ -34,7 +34,7 @@ dask.config.set(scheduler="processes")
 ```
 
 ```sh
-py-spy record --output profile_dask_60pnts_processes --idle --rate 5 --subprocesses --format speedscope python labmda_unwrap_dask.py
+py-spy record --output profile_dask_60pnts_processes --idle --rate 5 --subprocesses --format speedscope python lambda_unwrap_dask.py
 ```
 
 ### Dask with `threads` schedular:
@@ -45,7 +45,11 @@ dask.config.set(scheduler="threads")
 ```
 
 ```sh
-py-spy record --output profile_dask_60pnts_threads --idle --rate 5 --subprocesses --format speedscope python labmda_unwrap_dask.py
+py-spy record --output profile_dask_60pnts_threads --idle --rate 5 --subprocesses --format speedscope python lambda_unwrap_dask.py
 ```
 
 Then you can visualize the profile using the [`speedscope` web tool](https://www.speedscope.app/)
+
+## Profiling results
+
+The results for 5 points, 24 points and 60 points can be found at: [this link](https://zenodo.org/records/15393928/files/experiments.zip)

@@ -21,10 +21,10 @@ We use the `py-spy` package to profile the unwrapping algorithm. For example, we
 ### Loop method
 
 ```sh
-py-spy record --output profile_loop_60pnts --idle --rate 5 --subprocesses --format speedscope python lambda_unwrap.py
+py-spy record --output profile_loop_60pnts.json --idle --rate 5 --subprocesses --format speedscope python lambda_unwrap.py
 ```
 
-### Dask with `processes` schedular:
+### Dask with `processes` scheduler:
 
 In `lambda_unwrap_dask.py` configure: 
 
@@ -34,10 +34,10 @@ dask.config.set(scheduler="processes")
 ```
 
 ```sh
-py-spy record --output profile_dask_60pnts_processes --idle --rate 5 --subprocesses --format speedscope python lambda_unwrap_dask.py
+py-spy record --output profile_dask_60pnts_processes.json --idle --rate 5 --subprocesses --format speedscope python lambda_unwrap_dask.py
 ```
 
-### Dask with `threads` schedular:
+### Dask with `threads` scheduler:
 
 ```py
 # Configure dask scheduler
@@ -45,10 +45,10 @@ dask.config.set(scheduler="threads")
 ```
 
 ```sh
-py-spy record --output profile_dask_60pnts_threads --idle --rate 5 --subprocesses --format speedscope python lambda_unwrap_dask.py
+py-spy record --output profile_dask_60pnts_threads.json --idle --rate 5 --subprocesses --format speedscope python lambda_unwrap_dask.py
 ```
 
-Then you can visualize the profile using the [`speedscope` web tool](https://www.speedscope.app/)
+Then you can visualize the profiling results using the [`speedscope` web tool](https://www.speedscope.app/) by uploading the corresponding JSON file.
 
 ## Profiling results
 
